@@ -12,6 +12,8 @@ https://github.com/200966371/harness-video-director/releases/download/v0.1.0/lif
 
 点击 **安装 → 立即启用**，随后重启 Harness。无需自己下载、解压或寻找文件路径。
 
+首次安装如果提示依赖安装脚本被阻止，并列出 `esbuild`，点击 Harness 提供的 **「允许这些脚本并重试」**，等待安装完成后再点「立即启用」。这是渲染依赖的安装步骤，无需改文件或手动执行命令。
+
 插件已包含 `video-director`、`lifei-tutorial-video`、`frame-smith`，不需要另装两个 Skill，也不需要安装 Codex。
 
 ## 第一次使用
