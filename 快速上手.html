@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视频导演 · DeepSeek Harness 快速上手</title>
+  <style>
+    :root{color-scheme:light;--paper:#f4f1e9;--card:#fffef9;--ink:#17352b;--muted:#5f7066;--line:#cbd5c8;--accent:#31714c;--tint:#e6eddd;--gold:#a56e29}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}main{max-width:1120px;margin:auto;padding:0 30px}header{max-width:1120px;margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 30px 0}.brand{font-size:14px;font-weight:650;letter-spacing:.08em}nav{display:flex;gap:20px;font-size:13px}nav a{text-decoration:none}.screen{padding:52px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}.screen:last-child{border:0}.eyebrow{margin:0 0 14px;font:600 12px/1.4 ui-monospace,SFMono-Regular,monospace;letter-spacing:.12em;color:var(--accent)}h1{font-size:clamp(34px,4.5vw,55px);line-height:1.22;letter-spacing:-.04em;margin:0 0 20px;max-width:850px}h2{font-size:29px;line-height:1.35;letter-spacing:-.025em;margin:0 0 16px}h3{font-size:17px;margin:0 0 8px}p{margin:0 0 14px}.lead{font-size:18px;max-width:860px;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}.card{padding:25px 27px;border:1px solid var(--line);border-radius:16px;background:var(--card)}.card p:last-child{margin-bottom:0}.quote{margin:16px 0 0;padding:17px 21px;border-left:3px solid var(--accent);background:var(--tint);font-size:18px;line-height:1.6;border-radius:0 8px 8px 0}.small{font-size:13px;color:var(--muted)}.note{margin-top:20px;padding-left:15px;border-left:2px solid var(--gold);color:var(--muted);font-size:14px}.steps{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.steps li{border-top:2px solid var(--accent);padding-top:17px}.number{display:block;font:500 12px/1.4 ui-monospace,monospace;color:var(--accent);margin-bottom:10px}.steps p{color:var(--muted);font-size:15px}code{font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-wrap:anywhere}p code,li code{background:#e8ede3;padding:2px 5px;border-radius:4px}pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:15px 0 17px;padding:20px;border:1px solid var(--line);border-radius:9px;background:#eef1e9}pre code{font-size:13px}.install{max-width:900px}.facts{list-style:none;padding:0;margin:0}.facts li{margin:0 0 14px;padding-left:18px;position:relative}.facts li:before{content:"·";position:absolute;left:0;color:var(--accent);font-weight:bold}.path{display:block;margin:12px 0 18px;font-size:16px}footer{max-width:1120px;margin:auto;padding:15px 30px 30px;font-size:12px;color:var(--muted)}.pill{display:inline-block;border:1px solid var(--line);border-radius:100px;padding:3px 10px;font-size:12px;color:var(--muted);margin-top:8px}.span{grid-column:1/-1}details{margin-top:20px}summary{cursor:pointer;color:var(--accent);font-size:14px}details pre{margin-bottom:0}strong{font-weight:650}
+    .comparison{overflow-x:auto;margin-top:24px}table{width:100%;border-collapse:collapse;background:var(--card);font-size:15px}th,td{text-align:left;vertical-align:top;padding:16px;border:1px solid var(--line)}th{background:var(--tint)}th:first-child{width:15%}.trial{font-size:16px;line-height:1.8}nav{flex-wrap:wrap}
+    @media(max-width:700px){main{padding:0 20px}header{padding:20px 20px 0;align-items:flex-start;flex-direction:column;gap:12px}nav{gap:17px}.screen{padding:38px 0}h1{font-size:34px}h2{font-size:25px}.lead{font-size:16px}.grid{grid-template-columns:1fr;gap:14px;margin-top:22px}.card{padding:21px}.quote{font-size:16px}.steps{grid-template-columns:1fr;gap:12px}.steps li{display:grid;grid-template-columns:30px 1fr;gap:0 12px;padding-top:12px}.steps .number{grid-row:1/3;padding-top:6px}.steps h3,.steps p{grid-column:2}.steps p{margin-bottom:4px}footer{padding:10px 20px 25px}th,td{padding:10px;font-size:13px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{body{background:white;font-size:12px}header,footer{padding:12px 0}nav{display:none}main{padding:0;max-width:none}.screen{padding:22px 0;break-inside:avoid}h1{font-size:32px}h2{font-size:22px}.card{padding:16px}.lead,.quote{font-size:14px}pre{padding:12px}a{color:inherit;text-decoration:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">视频导演 <span class="small">／ DeepSeek Harness 插件</span></div>
+    <nav aria-label="说明导航"><a href="#start">怎么开始</a><a href="#revise">怎么修改</a><a href="#difference">和 Skill 的区别</a><a href="#install">安装</a><a href="#scope">能力与数据</a></nav>
+  </header>
+  <main>
+    <section class="screen" id="start" aria-labelledby="title">
+      <p class="eyebrow">01 / 在原聊天开始</p>
+      <h1 id="title">打开 Harness 的普通聊天，<br>把制作要求发给它。</h1>
+      <p class="lead"><strong>这张网页是说明书。</strong>实际操作入口是 <strong>DeepSeek Harness 原来的聊天输入框</strong>。安装并重启后，就在任意聊天里交代目标；成片也会出现在这个聊天里。</p>
+      <ol class="steps">
+        <li><span class="number">01</span><h3>回到 Harness 聊天</h3><p>打开一个普通聊天。首次使用可点输入框旁的“＋ 技能”，选择 <code>video-director</code>。</p></li>
+        <li><span class="number">02</span><h3>放素材、发要求</h3><p>把配音或录屏拖进输入框，再说明想做什么。只有文字时，也可以先做无声动画。</p></li>
+        <li><span class="number">03</span><h3>看成片、直接反馈</h3><p>等待聊天中的视频作品卡。看完继续说“第二段字放大，配音别动”，就能接着修改。</p></li>
+      </ol>
+      <div class="card" style="margin-top:28px">
+        <h3>没有素材？复制这一段到 Harness 聊天，试一次完整流程</h3>
+        <pre class="trial">请使用视频导演插件，做一个 10 秒的横屏无声动画，1920×1080，带中文字幕。内容是：把资料分成“待处理”“处理中”“已完成”三类。让文件卡片实际移动到对应分类里，文字清楚。自动安排镜头，完成后在本聊天给我可播放的视频。</pre>
+        <p class="small">这个例子不用准备录屏或配音，也不用购买声音服务。它会实际制作 MP4；耗时取决于模型响应、画面复杂度和电脑性能。</p>
+      </div>
+      <div class="grid">
+        <div class="card"><h3>已经有配音</h3><blockquote class="quote">把这段配音做成横屏动画讲解，1920×1080，配音不要改。直接生成视频给我看。</blockquote><p class="small" style="margin-top:14px">先把配音文件拖进同一个聊天，再发送这句话。想加固定标题或品牌名称时一起说。</p></div>
+        <div class="card"><h3>已经有素材，直接拖进聊天</h3><blockquote class="quote">这是配音和录屏，帮我剪成教程。配音不要改，重点操作放大一点。</blockquote><p class="small" style="margin-top:14px">素材会复制到项目目录，原文件保留。已有附件无需再重复粘贴路径。</p></div>
+      </div>
+      <p class="note">导演会按每个镜头自动安排动画、真实操作或混合画面，无需分别调用两项 Skill。也可用 <code>/video-director</code> 明确调用。只有文案时，当前插件不自带自动配音；要有旁白，请提供配音，或说明可以使用的配音工具。</p>
+    </section>
+    <section class="screen" id="revise" aria-labelledby="revise-title">
+      <p class="eyebrow">02 / 看作品，再说怎么改</p>
+      <h2 id="revise-title">修改意见仍然留在同一个聊天里。</h2>
+      <p class="lead">成片以作品卡出现在对话中。播放检查之后，可以直接说时间点或段落，也可以点击卡片上的镜头引用，把定位信息带回原输入框。</p>
+      <ol class="steps">
+        <li><span class="number">01</span><h3>播放与保存</h3><p>在作品卡看实际导出的视频，检查文字、动作、节奏和声音，再保存需要的版本。</p></li>
+        <li><span class="number">02</span><h3>引用镜头并反馈</h3><p>选中镜头，补充具体修改意图和要保持的部分。导演据此修改相关源码与衔接。</p></li>
+        <li><span class="number">03</span><h3>从当前进度继续</h3><p>卡片的“继续制作”回到原会话。重启后也可以说“继续刚才的视频”。</p></li>
+      </ol>
+      <blockquote class="quote">第 2 段像 PPT，让资料真的分到不同类别里。配音别动，其他内容保持。</blockquote>
+      <p class="note">每次计划和源码修改都会保存版本，旧视频保留。本版会修改局部源码后重新导出整片；原聊天“停止”可取消正在执行的渲染。作品卡的“未主观审片”需要通过实际观看和试听补足。</p>
+    </section>
+    <section class="screen" id="difference" aria-labelledby="difference-title">
+      <p class="eyebrow">03 / 和直接用 Skill 的区别</p>
+      <h2 id="difference-title">制作方法沿用两项 Skill，<br>插件把保存、渲染和作品卡一起装好。</h2>
+      <p class="lead">两者都由 Harness 当前的主模型接单，聊天用法很接近。Skill 可以包含说明和脚本，也能做出视频；插件把这两项 Skill 与固定的制作工具、运行依赖和聊天展示打包在一起。</p>
+      <div class="comparison"><table>
+        <thead><tr><th scope="col">你关心的事</th><th scope="col">直接使用 Skill</th><th scope="col">使用这个插件</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">开始制作</th><td>加载 Skill，Agent 按说明调用当前环境已有的能力。</td><td>统一由“视频导演”接手，后台使用两项 Skill，并提供安装好的本地渲染工具。</td></tr>
+          <tr><th scope="row">作品与版本</th><td>文件、记录及续做方式取决于 Skill 和所在项目的实现。</td><td>自动保存素材、分镜、源码、历史成片，并将项目与聊天关联。</td></tr>
+          <tr><th scope="row">播放与修改</th><td>结果如何预览、下载和定位修改，由宿主与具体工作流决定。</td><td>聊天内直接播放、拖动、保存；引用某个镜头，把修改定位填回同一输入框。</td></tr>
+          <tr><th scope="row">停止与恢复</th><td>取决于实际使用的脚本和工具。</td><td>原生“停止”取消本次渲染；继续时读取已保存的项目。尚未完成的渲染会重新执行。</td></tr>
+          <tr><th scope="row">画质与审美</th><td>取决于模型、素材、镜头设计和输出设置。</td><td>同样取决于这些因素。安装插件本身不会自动提高画质或让模型更聪明。</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">如果你自己的环境已经配好，直接用 Skill 也能完成制作。这个插件主要让其他人安装后少配置环境、少找项目文件，并且能在原聊天里持续修改作品。</p>
+    </section>
+    <section class="screen" id="install" aria-labelledby="install-title">
+      <p class="eyebrow">04 / 安装一次</p>
+      <h2 id="install-title">装进 Harness，沿用你当前的主模型。</h2>
+      <div class="install">
+        <p>打开 Harness 的<strong>「插件 → 添加插件」</strong>，复制下面这一整行链接粘贴到输入框，点击安装：</p>
+        <pre><code>https://github.com/200966371/harness-video-director/releases/download/v0.1.0/lifei-harness-video-director-0.1.0.tgz</code></pre>
+        <p><strong>无需下载、解压或寻找本地路径。</strong>三个 Skill 已经包含在安装包中，不需要额外安装 Skill 或 Codex。</p>
+        <p>安装完成后点击<strong>「立即启用」并重启 Harness</strong>。确认已配置自己的模型，回到任意原有聊天，按上面的例子直接开始。</p>
+        <p class="small">首次安装通常需要联网访问 GitHub 和 npm 安装源，以下载插件和渲染依赖。</p>
+        <p class="small">首版验证环境为 macOS Apple Silicon、Harness 0.2.1-rc.2；其他系统及版本需单独验证。运行需 Node.js 24+，Harness 桌面版自带运行时。优先使用本机 Chrome/Chromium/Edge；未找到时下载 Chromium 并跨项目复用。</p>
+        <p class="small">视频在本机渲染，不调用付费视频生成服务。插件不包含 API key、作者的个人素材或账号配置，沿用你当前的 Harness 主模型。</p>
+        <details><summary>使用命令行安装</summary><pre><code>dsh plugin --profile desktop add https://github.com/200966371/harness-video-director/releases/download/v0.1.0/lifei-harness-video-director-0.1.0.tgz</code></pre></details>
+        <details><summary>从源码安装（开发者）</summary><pre><code>npm ci
+dsh plugin --profile desktop add /绝对路径/video-director-plugin --ignore-scripts</code></pre><p class="small" style="margin-top:10px">先在源码目录执行 <code>npm ci</code>，再替换安装路径。完成后同样重启 Harness。</p></details>
+      </div>
+    </section>
+    <section class="screen" id="scope" aria-labelledby="scope-title">
+      <p class="eyebrow">05 / 知道它现在能做到哪里</p>
+      <h2 id="scope-title">真实制作、保留版本，缺什么就说清楚。</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>这一版的能力</h3>
+          <ul class="facts">
+            <li>输出真实 Remotion MP4：动画讲解、导入录屏制作教程、混合视频。</li>
+            <li>支持导入一条主旁白，从 0 秒按原速、原音量装配；导出编码为 AAC，不保证压缩后字节与源文件相同。</li>
+            <li>缺真实录屏时可继续其他部分，完整成片等待必要素材；不会画出虚假的软件成功结果。</li>
+            <li>技术检查覆盖编码、尺寸、时长、帧率和音轨；完整观看与听感仍需实际审片。</li>
+          </ul>
+          <p class="small">自动操作任意软件录屏、购买配音／图片／音乐服务、自动发布均未内置。需要时使用当前会话已有工具，并遵守本次授权。</p>
+        </div>
+        <div class="card">
+          <h3>作品和项目存在哪里</h3>
+          <p>默认数据目录：</p>
+          <code class="path">~/.dsh/data/lifei-video-director</code>
+          <p>项目包含 <code>project.json</code>、<code>assets/</code>、<code>sources/</code> 和 <code>revisions/</code>；聊天绑定保存在 <code>sessions/</code>。</p>
+          <p>插件升级与项目数据分开，当前不会自动清理历史视频。可在插件 config 中用 <code>dataRoot</code> 指定数据目录。</p>
+          <p class="small">同一用户跨聊天继续时，可明确给出项目 ID。若重启前的任务没有完成记录，状态会显示中断，恢复后从真实保存进度继续。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>离线上手说明 · 插件 0.1.0 · 内容依据同目录 README.md；本次桌面实测结论以交付验收记录为准。此文件无需联网，也不执行安装或制作操作。</footer>
+</body>
+</html>
